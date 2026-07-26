@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tanmoy ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+  text-align:center;
+}
+
+/* Starry background */
+.stars{
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(2px 2px at 20% 30%, white, transparent),
+  radial-gradient(2px 2px at 70% 20%, white, transparent),
+  radial-gradient(2px 2px at 50% 80%, white, transparent),
+  radial-gradient(2px 2px at 85% 60%, white, transparent),
+  radial-gradient(2px 2px at 10% 70%, white, transparent),
+  radial-gradient(2px 2px at 35% 50%, white, transparent),
+  radial-gradient(2px 2px at 65% 75%, white, transparent);
+  animation:twinkle 5s infinite alternate;
+  z-index:-2;
+}
+
+@keyframes twinkle{
+  from{opacity:.6;}
+  to{opacity:1;}
+}
+
+/* Password Screen */
+#password-screen{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.lock-box{
+  width:330px;
+  padding:30px;
+  border-radius:30px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 30px rgba(255,255,255,.15);
+}
+
+.lock-box h2{
+  color:#ff8fb3;
+  margin-bottom:10px;
+}
+
+#display{
+  width:170px;
+  padding:12px;
+  border:none;
+  border-radius:15px;
+  margin:20px 0;
+  text-align:center;
+  font-size:24px;
+}
+
+.keypad{
+  display:grid;
+  grid-template-columns:repeat(3,70px);
+  gap:12px;
+  justify-content:center;
+}
+
+.keypad button{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  border:none;
+  background:white;
+  color:#ff4d88;
+  font-size:22px;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:15px;
+  color:#ffb6c1;
+}
+
+/* Main content */
+#website-content{
+  display:none;
+  padding:30px 20px;
+}
+
+h1{
+  font-size:3rem;
+  color:#ff8fb3;
+  text-shadow:0 0 20px #ff4d88;
+}
+
+.message{
+  max-width:700px;
+  margin:20px auto;
+  font-size:1.2rem;
+  line-height:1.8;
+}
+
+#countdown{
+  margin-top:25px;
+  font-size:1.4rem;
+  color:#ffd6e7;
+}
+
+.btn{
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+/* Letter */
+.letter{
+  display:none;
+  max-width:700px;
+  margin:30px auto;
+  background:rgba(255,255,255,.12);
+  padding:25px;
+  border-radius:20px;
+  line-height:1.8;
+}
+
+/* Reasons cards */
+.reasons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin:40px auto;
+  max-width:1000px;
+}
+
+.card{
+  background:rgba(255,255,255,.1);
+  padding:20px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+  max-width:900px;
+  margin:40px auto;
+}
+
+.gallery img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:25px;
+  border:3px solid #ff8fb3;
+  transition:.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  color:#ff4d88;
+  animation:float 6s linear forwards;
+  pointer-events:none;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-100px);
+    opacity:0;
+  }
+}
+
+/* Confetti */
+.confetti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:white;
+  top:-20px;
+  animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- Password -->
+<div id="password-screen">
+  <div class="lock-box">
+    <h2>🎁 A Special Surprise For Tanmoy ❤️</h2>
+    <p>Hint: Our special date 💕</p>
+
+    <input type="password" id="display" readonly>
+
+    <div class="keypad">
+      <button onclick="addNum('1')">1</button>
+      <button onclick="addNum('2')">2</button>
+      <button onclick="addNum('3')">3</button>
+      <button onclick="addNum('4')">4</button>
+      <button onclick="addNum('5')">5</button>
+      <button onclick="addNum('6')">6</button>
+      <button onclick="addNum('7')">7</button>
+      <button onclick="addNum('8')">8</button>
+      <button onclick="addNum('9')">9</button>
+      <button onclick="clearPass()">⌫</button>
+      <button onclick="addNum('0')">0</button>
+      <button onclick="checkPassword()">❤️</button>
+    </div>
+
+    <p id="error"></p>
+  </div>
+</div>
+
+<!-- Main Website -->
+<div id="website-content">
+
+<h1>🎂 Happy Birthday, Tanmoy sona ❤️</h1>
+
+<p class="message">
+Happy Birthday to the most special person in my life darling.
+Thank you for every smile, every laugh and every beautiful memory.
+I hope your life is filled with happiness, success and endless love. 💖
+</p>
+
+<div id="countdown"></div>
+
+<button class="btn" onclick="showLetter()">💌 Open My Letter</button>
+
+<div class="letter" id="letter">
+  <h2>To My Favorite Person ❤️</h2>
+  <p>
+    Dear Love,<br><br>
+    You are one of the most beautiful parts of my life.
+    Thank you for every memory and every smile.
+    On your special day, I just want to remind you how important you are to me.
+    I hope all your dreams come true and your life is filled with love and happiness.
+    Happy Birthday Tanmoy! ❤️
+  </p>
+</div>
+
+<h2 style="margin-top:50px;">📝 Reasons Why I Love You</h2>
+
+<div class="reasons">
+  <div class="card">❤️ Your smile makes my day better.</div>
+  <div class="card">🌙 You always make me feel special.</div>
+  <div class="card">✨ You understand me.</div>
+  <div class="card">💖 You make ordinary moments beautiful.</div>
+  <div class="card">🌸 I feel happy when I talk to you.</div>
+  <div class="card">🎂 Because you're simply you.</div>
+</div>
+
+<h2>📸 Our Memories</h2>
+
+<div class="gallery">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+  <img src="photo5.jpg">
+  <img src="photo6.jpg">
+  <img src="photo7.jpg">
+</div>
+
+<button class="btn" onclick="alert('I Love You ❤️')">
+🎁 One More Surprise
+</button>
+
+<br><br>
+
+<audio id="music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+// Password
+function addNum(num){
+  document.getElementById("display").value += num;
+}
+
+function clearPass(){
+  let d = document.getElementById("display");
+  d.value = d.value.slice(0,-1);
+}
+
+function checkPassword(){
+  let pass = document.getElementById("display").value;
+
+  if(pass === "0808"){
+    document.getElementById("password-screen").style.display="none";
+    document.getElementById("website-content").style.display="block";
+    document.getElementById("music").play();
+    startConfetti();
+  }else{
+    document.getElementById("error").innerText =
+    "Try again dear ❤️";
+    document.getElementById("display").value = "";
+  }
+}
+
+// Love letter
+function showLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+// Floating hearts
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (20 + Math.random()*25) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+}
+
+setInterval(createHeart,500);
+
+// Confetti
+function startConfetti(){
+  for(let i=0;i<120;i++){
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random()*100 + "vw";
+    c.style.background =
+      `hsl(${Math.random()*360},100%,70%)`;
+    c.style.animationDelay =
+      Math.random()*3 + "s";
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>{
+      c.remove();
+    },5000);
+  }
+}
+
+// Countdown to next 8 August
+function updateCountdown(){
+  const now = new Date();
+  let target =
+    new Date(now.getFullYear(),7,8);
+
+  if(now > target){
+    target =
+      new Date(now.getFullYear()+1,7,8);
+  }
+
+  const diff = target - now;
+
+  const days =
+    Math.floor(diff/(1000*60*60*24));
+  const hours =
+    Math.floor((diff/(1000*60*60))%24);
+  const mins =
+    Math.floor((diff/(1000*60))%60);
+  const secs =
+    Math.floor((diff/1000)%60);
+
+  document.getElementById("countdown")
+  .innerHTML =
+  `⏳ ${days} Days ${hours} Hours ${mins} Minutes ${secs} Seconds until your birthday!`;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
